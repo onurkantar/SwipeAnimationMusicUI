@@ -11,9 +11,10 @@ import {
   Animated,
   PanResponder,
   Image,
+  Slider,
 } from "react-native";
 
-import { Slider } from "@react-native-community/slider";
+//import { Slider } from "@react-native-community/slider";
 
 import { Icon } from "react-native-elements";
 
@@ -119,7 +120,7 @@ class App extends Component {
                   width: animatedImageHeight,
                   marginLeft: animatedImageMarginLeft,
                 }}
-                source={require("./Hotel_California_Tekli_Plak_kapak.jpg")}
+                source={require("./assets/img/Hotel_California_Tekli_Plak_kapak.jpg")}
               />
               <Animated.Text
                 style={{
@@ -151,6 +152,31 @@ class App extends Component {
               opacity: animatedSongDetailsOpacity,
             }}
           >
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Text style={{ fontSize: 22, fontWeight: "bold" }}>
+                Hotel California (Live)
+              </Text>
+              <Text style={{ fontSize: 18 }}> Eagles - Hell Freezes Over </Text>
+            </View>
+
+            <View
+              style={{ height: 40, width: windowWidth, alignItems: "center" }}
+            >
+              <Slider
+                style={{ width: 300 }}
+                step={1}
+                minimumValue={18}
+                maximumValue={71}
+                value={35}
+              />
+            </View>
+
             <View
               style={{
                 flex: 2,

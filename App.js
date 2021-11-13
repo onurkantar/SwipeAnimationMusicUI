@@ -34,7 +34,19 @@ class App extends Component {
         this.animation.setValue({ x: 0, y: gestureState.dy });
       },
       onPanResponderRelease: (evt, gestureState) => {
-        if (gestureState.dy < 0) {
+        if (gestureState.moveY > windowHeight - 120) {
+          Animated.spring(this.animation.y, {
+            toValue: 0,
+            tension: 1,
+            useNativeDriver: false,
+          }).start();
+        } else if (gestureState.moveY < 120) {
+          Animated.spring(this.animation.y, {
+            toValue: 0,
+            tension: 1,
+            useNativeDriver: false,
+          }).start();
+        } else if (gestureState.dy < 0) {
           Animated.spring(this.animation.y, {
             toValue: -windowHeight + 120,
             tension: 1,
@@ -86,6 +98,12 @@ class App extends Component {
       extrapolate: "clamp",
     });
 
+    animatedBackgroundColor = this.animation.y.interpolate({
+      inputRange: [0, windowHeight - 90],
+      outputRange: ["rgba(0,0,0,0.5)", "white"],
+      extrapolate: "clamp",
+    });
+
     return (
       <Animated.View style={{ flex: 1, backgroundColor: "white" }}>
         <Animated.View
@@ -105,10 +123,10 @@ class App extends Component {
             style={{
               height: animatedHeaderHeight,
               borderTopWidth: animatedSongTitleOpacity,
-              borderTopColor: "gray",
+              borderTopColor: "white",
               flexDirection: "row",
               alignItems: "center",
-              backgroundColor: "white",
+              backgroundColor: animatedBackgroundColor,
             }}
           >
             <View

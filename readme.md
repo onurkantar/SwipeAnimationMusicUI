@@ -1,1 +1,1 @@
-![Alt Text](https://github.com/onurkantar/AnimatedSearchBarUI/blob/main/AnimatedSearcBarUI.gif)
+![Alt Text](https://github.com/onurkantar/SwipeAnimationMusicUI/blob/master/SwipeAnimationMusicUI.gif)
